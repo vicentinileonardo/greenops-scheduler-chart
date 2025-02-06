@@ -1,20 +1,18 @@
 replicaCount: 1
 
 image:
-  repository: greenops-scheduler
+  repository: docker.io/leovice/greenops-scheduler
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 80
-  targetPort: 5000
+  targetPort: 8000
 
 env:
-  - name: FLASK_ENV
-    value: production
-  - name: FLASK_APP
-    value: app.py
+  - name: KUBERNETES_DEPLOYMENT_ENABLED
+    value: "true"
 
 resources:
   limits:

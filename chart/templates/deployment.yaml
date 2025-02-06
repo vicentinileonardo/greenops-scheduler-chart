@@ -27,6 +27,9 @@ spec:
             - name: {{ .name }}
               value: {{ .value | quote }}
             {{- end }}
+          envFrom:
+             - secretRef:
+                 name: db-credentials    
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- if .Values.livenessProbe.enabled }}
